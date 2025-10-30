@@ -36,8 +36,8 @@ export default function Main() {
   // ✅ Setup socket once userId is ready
   useEffect(() => {
     if (!userId) return;
-
-    const socket = io("http://localhost:5000", {
+    console.log("url ", process.env.NEXT_PUBLIC_BACKEND_URL);
+    const socket = io(`${process.env.NEXT_PUBLIC_BACKEND_URL}`, {
       query: { playerId: userId },
     });
     socketRef.current = socket;
